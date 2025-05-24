@@ -1,7 +1,7 @@
-let htmlkod="";
+let htmlkod = "";
 products.forEach((item) => {
-    htmlkod +=
-        ` <div class="product-container">
+  htmlkod +=
+    ` <div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
               src="${item.image}">
@@ -20,7 +20,7 @@ products.forEach((item) => {
           </div>
 
           <div class="product-price">
-            ${(item.priceCents/100).toFixed(2)}
+            ${(item.priceCents / 100).toFixed(2)}
           </div>
 
           <div class="product-quantity-container">
@@ -52,3 +52,11 @@ products.forEach((item) => {
 });
 
 document.querySelector('.products-grid').innerHTML = htmlkod;
+
+document.querySelectorAll('.add_to-cart-button button-primary').forEach((button) => {
+
+  button.addEventListener('click', () => {
+    console.log('PRODUCT ADDED');
+  })
+
+});
