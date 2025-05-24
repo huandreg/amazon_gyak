@@ -65,7 +65,7 @@ document.querySelectorAll('.add-to-cart-button')
 
       cart.forEach((inthecartItem) => {
         if (productId === inthecartItem.productId) {
-          matchingItem = inthecartItem ;
+          matchingItem = inthecartItem;
         }
       });
 
@@ -79,8 +79,13 @@ document.querySelectorAll('.add-to-cart-button')
         });
       }
 
+      let cartQuantityAll = 0;
+      cart.forEach((item) => {
+        cartQuantityAll += item.quantity;
+      });
 
-      console.log(cart);
+      document.querySelector('.cart-quantity').innerHTML = cartQuantityAll;
+      document.querySelector('.checkout-num').innerHTML = cartQuantityAll;
     });
 
   });
