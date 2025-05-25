@@ -1,3 +1,7 @@
+import {products} from '../data/products.js';
+import {cart} from '../data/cart.js';
+
+
 let htmlkod = "";
 products.forEach((item) => {
   htmlkod +=
