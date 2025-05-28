@@ -1,5 +1,5 @@
-import {products} from '../data/products.js';
-import {cart} from '../data/cart.js';
+import { products } from '../data/products.js';
+import { cart } from '../data/cart.js';
 
 
 let htmlkod = "";
@@ -24,7 +24,7 @@ products.forEach((item) => {
           </div>
 
           <div class="product-price">
-            ${(item.priceCents / 100).toFixed(2)}
+            $${(item.priceCents / 100).toFixed(2)}
           </div>
 
           <div class="product-quantity-container">
@@ -87,9 +87,20 @@ document.querySelectorAll('.add-to-cart-button')
       cart.forEach((item) => {
         cartQuantityAll += item.quantity;
       });
+      saveCart(cartQuantityAll);
+
 
       document.querySelector('.cart-quantity').innerHTML = cartQuantityAll;
       document.querySelector('.checkout-num').innerHTML = cartQuantityAll;
     });
 
   });
+
+
+function saveCart(cartQuantityAll) {
+  localStorage.setItem('cart_q', JSON.stringify(cartQuantityAll));
+};
+
+function loadCart() {
+  JSON.parse(localStorage.getItem('cart_q'));
+};
