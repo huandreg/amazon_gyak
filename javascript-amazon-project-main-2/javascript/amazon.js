@@ -60,36 +60,41 @@ document.querySelector('.products-grid').innerHTML = htmlkod;
 
 document.querySelectorAll('.add-to-cart-button')
   .forEach((button) => {
-
     button.addEventListener('click', () => {
-
       const productId = button.dataset.idName;
-
-      let matchingItem;
-
-      cart.forEach((inthecartItem) => {
-        if (productId === inthecartItem.productId) {
-          matchingItem = inthecartItem;
-        }
-      });
-
-      if (matchingItem) {
-        matchingItem.quantity += 1;
-      }
-      else {
-        cart.push({
-          productId: productId,
-          quantity: 1
-        });
-      }
-
-      let cartQuantityAll = 0;
-      cart.forEach((item) => {
-        cartQuantityAll += item.quantity;
-      });
-      saveCart(cartQuantityAll);
+      addUpdateCart(productId);
     });
   });
+
+
+
+
+
+function addUpdateCart(productId) {
+  let matchingItem;
+
+  cart.forEach((inthecartItem) => {
+    if (productId === inthecartItem.productId) {
+      matchingItem = inthecartItem;
+    }
+  });
+
+  if (matchingItem) {
+    matchingItem.quantity += 1;
+  }
+  else {
+    cart.push({
+      productId: productId,
+      quantity: 1
+    });
+  }
+
+  let cartQuantityAll = 0;
+  cart.forEach((item) => {
+    cartQuantityAll += item.quantity;
+  });
+  saveCart(cartQuantityAll);
+};
 
 function saveCart(cartQuantityAll) {
   localStorage.setItem('cart_q', JSON.stringify(cartQuantityAll));
